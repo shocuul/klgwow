@@ -177,9 +177,12 @@ function klgwow_updated_messages($messages){
 			6 => sprintf(__('%s published. <a href="%s"> View %s </a>'),$title, esc_url(get_permalink($post_ID)),strtolower($title)),
 			7 => __($title.' saved.'),
 			8 => sprintf(__('%s submitted. <a target="_blank" href="%s">Preview %s </a>'),$title,esc_url( add_query_arg('preview','true',get_permalink( $post_ID ))),strtolower($title)),
-			9 => sprintf(__('%s scheduled for: <strong>'))
-			)
+			9 => sprintf(__('%s scheduled for: <strong>%2$s</strong>. <a target="_blank" href="%3$s">Preview %1$s</a>'),$title,date_i18n(__('M j,Y @G:i'),strtolower($post->post_date)),esc_url(get_permalink( $post_ID ))),
+			10 => sprintf(__('%s draft update. <a target="_blank" href="%s">Preview %s </a>'),$title, esc_url(add_query_arg('preview','true',get_permalink( $post_ID))),strtolower($title)),
+			);
 	}
+	return $messages
 }
+add_filter('post_updated_messages','klgwow_updated_messages');
 	
  ?>
