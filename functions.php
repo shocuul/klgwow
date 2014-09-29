@@ -110,5 +110,76 @@ function register_klg_players() {
 
 // Hook into the 'init' action
 add_action( 'init', 'register_klg_players', 0 );
+
+function klg_post_types(){
+	$types = array(
+			'klg_staff'=>array(
+				'menu_title'=>'Staff',
+				'plural'=>'People',
+				'single'=>'Person',
+				'supports'=>array('title','editor','excerpt','thumbnail','author','page-attributes'),
+				'slug'=>'staff'),
+			'klg_menu'=>array(
+				'menu_title'=>'Menu',
+				'plural'=>'Items',
+				'singular'=>'Item',
+				'supports'=>array('title','editor','excerpt','thumbnail','author','page-attributes'),
+				'slug'=>'menu')
+		);
+	$counter = 0;
+	foreach ($types as $type => $arg) {
+		# code...
+		$labels = array(
+			'name'=>$arg['menu_title'],
+			'singular_name'=>$arg['singular'],
+			'add_new'=>'Add new',
+			'add_new_item'=>'Add new'.strtolower($arg['singular']),
+			'edit_item'=>'Edit'.strtolower($arg['singular']),
+			'new_item'=>'New '.strtolower($arg['singular']),
+			'all_items'=>'All '.strtolower($arg['plural']),
+			'view_item'=>'View '.strtolower($arg['plural']),
+			'search_items'=>'Search '.strtolower($arg['plural']),
+			'not_found'=>'No '.strtolower($arg['plural']). 'found',
+			'not_found_in_trash'=>'No '.strtolower($arg['plural']).'found in trash',
+			'parent_item_colon'=>'',
+			'menu_name'=>$arg['menu_title']
+			);
+
+		register_post_type($type,array(
+			'labels'=>$labels,
+			'public'=>true,
+			'has_archive'=>true,
+			'capability_type'=>'post',
+			'supports'=>$arg['supports'],
+			'rewrite'=>array('slug'=>$arg['slug']),
+			'menu_position'=>(20 + $counter),
+			));
+		$counter++;
+	}
+}
+// add_action('init','klg_post_types');
+
+function klgwow_updated_messages($messages){
+	global $post, $post_ID;
+	$types = array(
+		'klg_staff'=>'Person',
+		'klg_menu'=>'Item',);
+
+	foreach ($types as $type => $title) {
+		# code...
+		$messages[$type] = array(
+			0 => '',
+			1 => sprintf(__('%s updated. <a href="%s">View %s</a>'),$title,esc_url(get_permalink($post_ID)),$title),
+			2 => __('Custom field updated.'),
+			3 => __('Custom field deleted.'),
+			4 => __(strtolower($title).'updated.'),
+			5 => isset($_GET['revision']) ? sprintf(__('%s restored to revision from %s'),$title,wp_post_revision_title((int)$_GET['revision'],false)):false,
+			6 => sprintf(__('%s published. <a href="%s"> View %s </a>'),$title, esc_url(get_permalink($post_ID)),strtolower($title)),
+			7 => __($title.' saved.'),
+			8 => sprintf(__('%s submitted. <a target="_blank" href="%s">Preview %s </a>'),$title,esc_url( add_query_arg('preview','true',get_permalink( $post_ID ))),strtolower($title)),
+			9 => sprintf(__('%s scheduled for: <strong>'))
+			)
+	}
+}
 	
  ?>
