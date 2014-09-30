@@ -25,6 +25,11 @@ if (!function_exists('klgwow_setup')):
 	endif; // klgwow_setup
 	add_action('after_setup_theme','klgwow_setup');
 
+	function my_rewrite_flush(){
+		flush_rewrite_rules();
+	}
+	//add_action( 'after_switch_theme', 'klgwow_flush_rewrite_rules' );
+
 	
 	function simple_copyright(){
 		echo "&copy; ". get_bloginfo('name')." ".date("Y");
@@ -48,7 +53,7 @@ if (!function_exists('klgwow_setup')):
 	add_action('wp_enqueue_scripts','klgwow_scripts_and_styles');
 
 	/** Custom Post Type Example__
-	*/
+	
 	register_post_type('ptd_movie',array(
 										'labels'=>array(
 											'name'=>__('Movies','klgwow'),
@@ -58,6 +63,7 @@ if (!function_exists('klgwow_setup')):
 										'has_archive'=>true,
 										)
 	);
+    */
 	// Register Player KLG
 	
 function register_klg_players() {
@@ -158,17 +164,16 @@ function klg_post_types(){
 	}
 }
 // add_action('init','klg_post_types');
-
-function klgwow_updated_messages($messages){
+/**
+function klgwow_updated_messages($messages) {
 	global $post, $post_ID;
 	$types = array(
 		'klg_staff'=>'Person',
 		'klg_menu'=>'Item',);
 
 	foreach ($types as $type => $title) {
-		# code...
 		$messages[$type] = array(
-			0 => '',
+			0 => "",
 			1 => sprintf(__('%s updated. <a href="%s">View %s</a>'),$title,esc_url(get_permalink($post_ID)),$title),
 			2 => __('Custom field updated.'),
 			3 => __('Custom field deleted.'),
@@ -183,6 +188,39 @@ function klgwow_updated_messages($messages){
 	}
 	return $messages
 }
-add_filter('post_updated_messages','klgwow_updated_messages');
-	
+*/
+//add_filter('post_updated_messages','klgwow_updated_messages');
+
+
+function klg_custom_columns($cols){
+	$cols = array(
+		'cb' => '<input type="checkbox"/>',
+		'title' => __('Title','klgwow'),
+		'photo' => __('Thumbnail','klgwow'),
+		'date' => __('Date','klgwow'),
+		);
+		return $cols;
+}
+
+//add_filter("manage_klg_staff_post_columns","klg_custom_columns");
+//add_filter("manage_klg_menu_posts_columns","klg_custom_columns");
+
+function klgwow_custom_column_content($column, $post_id){
+	switch ($column) {
+		case "photo":
+			if (has_post_thumbnail( $post_id )) {
+				# code...
+				echo get_the_post_thumbnail( $post_id, array(50,50) );
+			}
+			break;
+		
+		default:
+			# code...
+			break;
+	}
+}
+//add_action( "manage_klg_staff_post_custom_columns", "klgwow_custom_column_content", $priority = 10, $accepted_args = 2 );
+//add_action( "manage_klg_menu_post_custom_columns", "klgwow_custom_column_content", $priority = 10, $accepted_args = 2 );
+
+
  ?>
