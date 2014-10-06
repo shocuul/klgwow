@@ -90,11 +90,11 @@ function register_klg_players() {
 		'feeds'               => true,
 	);
 	$args = array(
-		'label'               => __( 'klg_players', 'traslation' ),
+		'label'               => __( 'klg_player', 'traslation' ),
 		'description'         => __( 'Jugadores de Wow KLG', 'traslation' ),
 		'labels'              => $labels,
-		'supports'            => array( 'title', 'thumbnail', 'custom-fields', ),
-		'taxonomies'          => array( 'category', 'post_tag' ),
+		'supports'            => array( 'title', 'thumbnail',),
+		//'taxonomies'          => array( 'category', 'post_tag' ),
 		'hierarchical'        => false,
 		'public'              => true,
 		'show_ui'             => true,
@@ -110,13 +110,132 @@ function register_klg_players() {
 		'rewrite'             => $rewrite,
 		'capability_type'     => 'post',
 	);
-	register_post_type( 'klg_players', $args );
+	register_post_type( 'klg_player', $args );
 
 }
 
 // Hook into the 'init' action
 add_action( 'init', 'register_klg_players', 0 );
 
+function klgwow_taxonomies(){
+	$taxs = array(
+		'klg_pj_class'=>array(
+			'menu_title'=>'Character Class',
+			'plural'=>'Classes',
+			'singular'=>'Class',
+			'hierarchical'=>true,
+			'slug'=>'class',
+			'post_type'=>'klg_player'),
+		'klg_raid_roles'=>array(
+			'menu_title'=>'Raid Roles',
+			'plural'=>'Roles',
+			'singular'=>'Role',
+			'hierarchical'=>true,
+			'slug'=>'raid-role',
+			'post_type'=>'klg_player'));
+	foreach ($taxs as $tax => $args) {
+		$labels = array(
+			'name'=>_x('Item '.$args['plural'],'taxonomy general name'),
+			'singular_name'=>_x('Item '.$args['singular'],'taxonomy singular name'),
+			'search_items'=>__('Search '.$args['plural']),
+			'all_items'=>__('All '.$args['plural']),
+			'parent_item'=>__('Parent '.$args['plural']),
+			'parent_item_colon'=>__('Parent '.$args['singular'].':'),
+			'edit_item'=>__('Edit '.$args['singular']),
+			'update_item'=>__('Update '.$args['singular']),
+			'add_new_item'=>__('Add New '.$args['singular'].'Name'),
+			'menu_name'=>__($args['menu_title']));
+		$tax_args = array(
+			'hierarchical'=>$args['hierarchical'],
+			'labels'=>$labels,
+			'public'=>true,
+			'rewrite'=>array('slug'=>$args['slug']),
+			);
+		register_taxonomy( $tax, $args['post_type'], $tax_args );
+	}
+}
+
+add_action('init','klgwow_taxonomies');
+
+// Se agregan los custom meta box a el post type klg_players
+function klgwow_player_meta_box(){
+	add_meta_box('klg_player_meta',
+	__('Player Info','klgwow'),
+	'klgwow_player_meta_fields',//Callback
+	'klg_player',
+	'normal','core');
+}
+add_action('add_meta_boxes','klgwow_player_meta_box');
+
+// Fields para los custom meta box
+function klgwow_player_meta_fields($post){
+	wp_nonce_field( basename(__FILE__),'klg_custom_meta_noncename' );
+	$stream_url = get_post_meta( $post->ID,'klg_player_stream_url', true );
+	$armory_url = get_post_meta( $post->ID,'klg_player_armory_url',true);
+	?>
+	<p>
+		<label for="klg_player_stream_url">Stream URL</label><br />
+		<input type="text" class="all-options" name="klg_player_stream_url" id="klg_player_stream_url" value="<?php echo esc_attr( $stream_url ); ?>"/>
+		<span class="description">Ingresa aqui el link del stream del jugador en caso de tenerlo.</span>
+	</p>
+	<p>
+		<label for="klg_player_armory_url">Armory URL</label><br />
+		<input type="text" class="all-options" name="klg_player_armory_url" id="klg_player_armory_url" value="<?php echo esc_attr( $armory_url ); ?>"/>
+		<span class="description">Ingresa aqui el link del Armory del jugador</span>
+	</p>
+	<?php
+}
+// Cambia el titulo del custom post type
+function change_default_title($title){
+	$screen = get_current_screen();
+	if($screen->post_type === 'klg_player'){
+		return 'Ingresa el nombre del jugador aqui.';
+	}
+}
+
+add_filter('enter_title_here','change_default_title');
+
+function klg_player_meta_save($post_id){
+	//verify if this is an auto save routine.
+	//if it is the post has not been updated, so we dont want to do anything
+	if(defined('DOING_AUTOSAVE') && DOING_AUTOSAVE){
+		return $post_id;
+	}
+	//verify this came from the screen and with proper authorization,
+	//because save_post can be triggered at other times.
+	if(!isset($_POST['klg_custom_meta_noncename'])||!wp_verify_nonce( $_POST['klg_custom_meta_noncename'], basename(__FILE__))){
+		return $post_id;
+	}
+	//Get the post type object.
+	global $post;
+	$post_type = get_post_type_object($post->post_type);
+	//Check if the current user has permission to edit the post
+	if(!current_user_can( $post_type->cap->edit_post,$post_id )){
+		return $post_id;
+	}
+	//Get the posted data and pass it into an associative array for easy of entry
+	$metadata['klg_player_stream_url'] = (isset($_POST['klg_player_stream_url'])?$_POST['klg_player_stream_url']:'');
+	$metadata['klg_player_armory_url'] = (isset($_POST['klg_player_armory_url'])?$_POST['klg_player_armory_url']:'');
+
+	// add/update record (both are taken care of by update_post_meta)
+	foreach ($metadata as $key => $value) {
+		//get current meta value
+		$current_value = get_post_meta( $post_id, $key , true);
+		if($value && '' == $current_value){
+			add_post_meta($post_id,$key,$value,true);
+		}elseif ($value && $value != $current_value) {
+			update_post_meta($post_id,$key,$value);
+		}elseif ('' == $value && $current_value ) {
+			delete_post_meta($post_id, $key, $current_value);
+		}
+	}
+}
+add_action('save_post','klg_player_meta_save');
+
+//if('klg_player'=== $post_type->name){
+//	$metadata['klg_player_stream_url'] = (isset($_POST['klg_player_stream_url']) ? $_POST['klg_player_stream_url']:'');
+
+//}
 function klg_post_types(){
 	$types = array(
 			'klg_staff'=>array(

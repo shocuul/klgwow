@@ -2,7 +2,7 @@
 	<!-- Stuff will go here -->
 	<?php the_post(); ?>
 	<article class="page-content">
-		<?php the content(); ?>
+		<?php the_content(); ?>
 	</article>
 	<aside class="lastest-news">
 		<h2>Lastest News</h2>
