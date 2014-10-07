@@ -236,6 +236,8 @@ add_action('save_post','klg_player_meta_save');
 //	$metadata['klg_player_stream_url'] = (isset($_POST['klg_player_stream_url']) ? $_POST['klg_player_stream_url']:'');
 
 //}
+
+
 function klg_post_types(){
 	$types = array(
 			'klg_staff'=>array(
