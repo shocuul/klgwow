@@ -36,6 +36,39 @@ if (!function_exists('klgwow_setup')):
 	}
 
 	/**
+	 * Creates a nicely formatted and more specific title element text
+	 * for output in head of document, based on current view
+	 *
+	 * @since Twenty Twelve 1.0
+	 *
+	 * @param string $title Default title text for current view.
+	 * @param string $sep Optional separator.
+	 * @return string Filtered title
+	 */
+
+	function twentytwelve_wp_title( $title, $sep ) {
+	global $paged, $page;
+
+	if ( is_feed() )
+		return $title;
+
+	// Add the blog name.
+	$title .= get_bloginfo( 'name' );
+
+	// Add the blog description for the home/front page.
+	$site_description = get_bloginfo( 'description', 'display' );
+	if ( $site_description && ( is_home() || is_front_page() ) )
+		$title = "$title $sep $site_description";
+
+	// Add a page number if necessary.
+	if ( $paged >= 2 || $page >= 2 )
+		$title = "$title $sep " . sprintf( __( 'Page %s', 'twentytwelve' ), max( $paged, $page ) );
+
+	return $title;
+}
+add_filter( 'wp_title', 'twentytwelve_wp_title', 10, 2 );
+
+	/**
 	 * Enqueue scripts and styles
 	 */
 	function klgwow_scripts_and_styles(){
@@ -102,7 +135,7 @@ function register_klg_players() {
 		'show_in_nav_menus'   => true,
 		'show_in_admin_bar'   => true,
 		'menu_position'       => 5,
-		'menu_icon'           => 'http://i.imgur.com/qZ83rda.png',
+		'menu_icon'           => 'http://i.imgur.com/VevMcig.png',
 		'can_export'          => true,
 		'has_archive'         => true,
 		'exclude_from_search' => false,
@@ -311,7 +344,82 @@ function klgwow_updated_messages($messages) {
 }
 */
 //add_filter('post_updated_messages','klgwow_updated_messages');
+// Columnas custom para el post type klg_player
 
+add_filter('manage_edit-klg_player_columns','edit_klg_player_columns');
+
+function edit_klg_player_columns($columns){
+	$columns = array(
+		'cb'=>'<input type="checkbox"/>',
+		'title'=>__( 'Player' ),
+		'class'=>__( 'Class' ),
+		'raidrole'=>__( 'Raid Role' ),
+		'streamurl'=>__( 'Stream' ),
+		'date'=>__( 'Date' )
+		);
+	return $columns;
+}
+
+add_action('manage_klg_player_posts_custom_column','manage_klg_player_column',10,2);
+
+function manage_klg_player_column($column, $post_id){
+	global $post;
+
+	switch ($column) {
+		case 'class':
+			/* Get the pj class for the post */
+			$classes = get_the_terms( $post_id, 'klg_pj_class' );
+
+			/* If termes were found */
+			if(!empty($classes)){
+				$out = array();
+
+				/* Loop through each term, linking to the 'edit post' page 
+				for the specific term. */
+				foreach ($classes as $class) {
+					$out[] = sprintf('<a href="%s">%s</a>',
+						esc_url(add_query_arg(array('post_type'=>$post->post_type,'klg_pj_class'=>$class->slug),'edit.php')),
+						esc_html(sanitize_term_field('name',$class->name,$class->term_id,'klg_pj_class','display'))
+						);
+				}
+				echo join(', ', $out);
+			}else{
+				_e('No class');
+			}
+			break;
+		case 'raidrole':
+			//klg_raid_roles
+			/* Get the raid roles for the post */
+			$raidroles = get_the_terms($post_id,'klg_raid_roles');
+			/* If termes were found */
+			if(!empty($raidroles)){
+				$out = array();
+
+				foreach ($raidroles as $role) {
+					$out[] = sprintf('<a href="%s">%s</a>',
+						esc_url(add_query_arg(array('post_type'=>$post->post_type,'klg_raid_roles'=>$role->slug),'edit.php')),
+						esc_html( sanitize_term_field( 'name', $role->name, $role->term_id,'klg_raid_roles','display' ))
+						);
+				}
+				echo join(', ', $out);
+			}else{
+				_e('No Raid Role');
+			}
+			break;
+		case 'streamurl':
+			/* Get the post meta */
+			$streamurl = get_post_meta( $post_id, $key = 'klg_player_stream_url', $single = true );
+			/* If no stream url found, output a default message. */
+			if(empty($streamurl)){
+				echo __('This player dont have stream');
+			}else{
+				printf('<a href="%s" target="_blank"><img src="http://i.imgur.com/Q4Q7gHb.png"/></a>',$streamurl);
+			}
+			break;
+		default:
+			break;
+	}
+}
 
 function klg_custom_columns($cols){
 	$cols = array(
@@ -340,8 +448,13 @@ function klgwow_custom_column_content($column, $post_id){
 			break;
 	}
 }
+
+
+
 //add_action( "manage_klg_staff_post_custom_columns", "klgwow_custom_column_content", $priority = 10, $accepted_args = 2 );
 //add_action( "manage_klg_menu_post_custom_columns", "klgwow_custom_column_content", $priority = 10, $accepted_args = 2 );
+
+
 
 
  ?>

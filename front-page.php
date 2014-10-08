@@ -4,6 +4,12 @@
 	<article class="page-content">
 		<?php the_content(); ?>
 	</article>
+	<div class="menu">
+		
+	</div>
+	<div class="menuover">
+		
+	</div>
 
 	<aside class="lastest-news">
 		<h2>Lastest News</h2>
@@ -13,7 +19,7 @@
 			'post_type' => 'post',
 			'orderby' => 'date',
 			'order' => 'ASC',
-			'posts_per_page' => 4,);
+			'posts_per_page' => 5,);
 		$lastest_news = new WP_Query($args);
 		if ($lastest_news->have_posts()):while($lastest_news->have_posts()):$lastest_news->the_post();
 		 ?>

@@ -11,7 +11,8 @@
 @import 'variables';
 
 body{
-	position: fixed;
+	//overflow:scroll;
+	//position: fixed;
 	top:0;
 	left:0;
 	width:100%;
@@ -124,6 +125,39 @@ article h1 {
 .latest-news article{
 	padding-bottom: 15px;
 }
+
+.menu {
+  border-width: 0.48px;
+  border-color: rgb( 204, 153, 51 );
+  border-style: solid;
+  border-radius: 10px;
+  background-image: -moz-linear-gradient( 90deg, rgb(102,51,0) 0%, rgb(77,26,0) 7%, rgb(51,0,0) 50%, rgb(77,26,0) 92%, rgb(102,51,0) 100%);
+  background-image: -webkit-linear-gradient( 90deg, rgb(102,51,0) 0%, rgb(77,26,0) 7%, rgb(51,0,0) 50%, rgb(77,26,0) 92%, rgb(102,51,0) 100%);
+  background-image: -ms-linear-gradient( 90deg, rgb(102,51,0) 0%, rgb(77,26,0) 7%, rgb(51,0,0) 50%, rgb(77,26,0) 92%, rgb(102,51,0) 100%);
+  position: absolute;
+  left: 192px;
+  top: 532px;
+  width: 681px;
+  height: 78px;
+  z-index: 21;
+}
+.menuover {
+  border-width: 0.48px;
+  border-color: rgb( 204, 153, 51 );
+  border-style: solid;
+  border-radius: 10px;
+  background-image: -moz-linear-gradient( 90deg, rgb(102,51,0) 0%, rgb(77,26,0) 7%, rgb(51,0,0) 50%, rgb(77,26,0) 92%, rgb(102,51,0) 100%);
+  background-image: -webkit-linear-gradient( 90deg, rgb(102,51,0) 0%, rgb(77,26,0) 7%, rgb(51,0,0) 50%, rgb(77,26,0) 92%, rgb(102,51,0) 100%);
+  background-image: -ms-linear-gradient( 90deg, rgb(102,51,0) 0%, rgb(77,26,0) 7%, rgb(51,0,0) 50%, rgb(77,26,0) 92%, rgb(102,51,0) 100%);
+  opacity: 0.761;
+  position: absolute;
+  left: 192px;
+  top: 532px;
+  width: 681px;
+  height: 78px;
+  z-index: 22;
+}
+
 
 
 
