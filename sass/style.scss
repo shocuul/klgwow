@@ -128,12 +128,16 @@ article h1 {
 }
 .upperimage {
   background-image: url("images/upperimage.jpg");
-  position: absolute;
+  
   left: 0px;
   top: 0px;
   width: 1299px;
   height: 42px;
-  z-index: 1;
+ 
+}
+.logo{
+	//position: absolute;
+	 z-index: 2;
 }
 
 

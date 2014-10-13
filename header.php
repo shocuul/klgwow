@@ -23,7 +23,7 @@
  	<header class="site-header">
  		<h1>
  			<a href="<?php home_url('/'); ?>">
- 			<img src="<?php bloginfo('template_directory') ?>/images/logo.png" alt="Logo Gaming" >
+ 			<img src="<?php bloginfo('template_directory') ?>/images/logo.png" class="logo" alt="Logo Gaming" >
  			</a></h1>
  	</header>
  	<nav class="main-navigation">

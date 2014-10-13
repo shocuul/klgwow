@@ -1,8 +1,8 @@
 //*/ Variables
 //=========================================*/
 
-$font-headers:'Clicker Script', cursive;
-$font-body:'EB Garamond', serif;
+
+
 
 //$font-headers:cursive;
 //$font-body:serif;
@@ -12,3 +12,11 @@ $clr-headers:#593D36;
 $clr-lightbrown:#A67F68;
 $clr-text:#2F2B2C;
 $clr-background:#261213;
+
+@font-face{
+	font-family:"LifeCraft";
+	src: url("../fonts/LifeCraft_Font.ttf");
+}
+
+$font-headers:'LifeCraft', cursive;
+$font-body:'EB Garamond', serif;

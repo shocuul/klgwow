@@ -364,6 +364,9 @@ td,
 th {
   padding: 0; }
 
+@font-face {
+  font-family: "LifeCraft";
+  src: url("../fonts/LifeCraft_Font.ttf"); }
 body {
   top: 0;
   left: 0;
@@ -381,7 +384,7 @@ body {
 
 h1, h2, h3 {
   color: #593D36;
-  font-family: "Clicker Script", cursive; }
+  font-family: "LifeCraft", cursive; }
 
 h1 {
   margin: 10px 0;
@@ -463,12 +466,13 @@ article h1 {
 
 .upperimage {
   background-image: url("images/upperimage.jpg");
-  position: absolute;
   left: 0px;
   top: 0px;
   width: 1299px;
-  height: 42px;
-  z-index: 1; }
+  height: 42px; }
+
+.logo {
+  z-index: 2; }
 
 .menu {
   border-width: 0.48px;
