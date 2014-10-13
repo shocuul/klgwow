@@ -5,10 +5,13 @@
  */
  ?>
  <!DOCTYPE html>
- <html class="no-js"<?php language_attributes(); ?>>
+ <html <?php language_attributes(); ?>>
  <head>
- 	<meta name="viewpost" content="width=device-width"/>
+ 	<meta charset="<?php bloginfo('charset'); ?>"
+ 	<meta name="viewpost" content="width=device-width, initial-scale=1"/>
  	<title><?php wp_title('|', true,'right'); ?></title>
+ 	<link rel="profile" href="http://gmpg.org/xfn/11">
+ 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
  	<!-- HTML5 SHIV for IE --><!-- If using Modernizr you can remove this script!-->
  	<!--[if lt IE 9]>
  		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -16,6 +19,7 @@
  	<?php wp_head(); ?>
  </head>
  <body <?php body_class(); ?>>
+ <div class="upperimage"></div>
  	<header class="site-header">
  		<h1>
  			<a href="<?php home_url('/'); ?>">

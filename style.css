@@ -375,7 +375,7 @@ body {
   font-size: 16px;
   line-height: 1.375;
   color: #2F2B2C;
-  background: url(images/backgrounds/bg-1.jpg) center center no-repeat;
+  background-color: #261213;
   background-attachment: fixed;
   background-size: cover; }
 
@@ -460,6 +460,15 @@ article h1 {
 
 .latest-news article {
   padding-bottom: 15px; }
+
+.upperimage {
+  background-image: url("images/upperimage.jpg");
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 1299px;
+  height: 42px;
+  z-index: 1; }
 
 .menu {
   border-width: 0.48px;
