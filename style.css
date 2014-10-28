@@ -12,6 +12,7 @@
  * 2. Prevent iOS text size adjust after orientation change, without disabling
  *    user zoom.
  */
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
 html {
   font-family: sans-serif;
   /* 1 */
@@ -414,15 +415,27 @@ p {
 
 a {
   text-decoration: none;
-  color: #47588C; }
+  color: #800909; }
   a:hover {
-    color: shade(#47588C, 10%);
-    text-decoration: underline; }
+    color: shade(#800909, 10%); }
+
+.site-header {
+  background: url("./images/headerbg.png");
+  margin: 0;
+  height: 500px;
+  background-position: 49.99% 0;
+  background-repeat: no-repeat; }
+  .site-header h1 {
+    margin: 0; }
+
+.logo {
+  margin: 0 auto;
+  width: 150px; }
 
 .container {
   position: fixed;
   left: 10%;
-  width: 400px;
+  width: 370px;
   height: 100%;
   margin: 0;
   padding: 20px;
@@ -433,15 +446,18 @@ a {
   -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   overflow-y: auto; }
 
-nav.menu ul {
+nav.main-navigation ul {
   list-style: none;
-  padding: 10 px 0;
-  border-top: 1px solid #593D36; }
-  nav.menu ul li {
+  padding-top: 50px; }
+  nav.main-navigation ul li {
     display: inline; }
-    nav.menu ul li a {
-      font-size: 12px;
+    nav.main-navigation ul li a {
+      text-shadow: 2px 0 0 #4D1A1A, -2px 0 0 #4D1A1A, 0 2px 0 #4D1A1A, 0 -2px 0 #4D1A1A, 1px 1px #4D1A1A, -1px -1px 0 #4D1A1A, 1px -1px 0 #4D1A1A, -1px 1px 0 #4D1A1A;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.5em;
       text-transform: uppercase; }
+      nav.main-navigation ul li a:hover {
+        color: #fff; }
 
 .main-navigation ul {
   margin: 0 0 20px;
@@ -449,6 +465,14 @@ nav.menu ul {
   border-bottom: 1px solid #593D36; }
   .main-navigation ul li a {
     padding: 0 5px; }
+
+.main-navigation {
+  display: absolute;
+  margin-top: 220px;
+  background-image: url("images/nav.png");
+  background-repeat: no-repeat;
+  background-position: top center;
+  height: 150px; }
 
 .footer-navigation ul li a {
   padding: 0 10px 0 0; }
@@ -466,41 +490,40 @@ article h1 {
 
 .upperimage {
   background-image: url("images/upperimage.jpg");
-  left: 0px;
-  top: 0px;
-  width: 1299px;
-  height: 42px; }
+  width: 100%;
+  height: 42px;
+  display: block;
+  margin: 0;
+  padding: 0; }
 
-.logo {
-  z-index: 2; }
-
-.menu {
+/*.menu {
   border-width: 0.48px;
-  border-color: #cc9933;
+  border-color: rgb( 204, 153, 51 );
   border-style: solid;
   border-radius: 10px;
-  background-image: -moz-linear-gradient(90deg, #663300 0%, #4d1a00 7%, #330000 50%, #4d1a00 92%, #663300 100%);
-  background-image: -webkit-linear-gradient(90deg, #663300 0%, #4d1a00 7%, #330000 50%, #4d1a00 92%, #663300 100%);
-  background-image: -ms-linear-gradient(90deg, #663300 0%, #4d1a00 7%, #330000 50%, #4d1a00 92%, #663300 100%);
+  background-image: -moz-linear-gradient( 90deg, rgb(102,51,0) 0%, rgb(77,26,0) 7%, rgb(51,0,0) 50%, rgb(77,26,0) 92%, rgb(102,51,0) 100%);
+  background-image: -webkit-linear-gradient( 90deg, rgb(102,51,0) 0%, rgb(77,26,0) 7%, rgb(51,0,0) 50%, rgb(77,26,0) 92%, rgb(102,51,0) 100%);
+  background-image: -ms-linear-gradient( 90deg, rgb(102,51,0) 0%, rgb(77,26,0) 7%, rgb(51,0,0) 50%, rgb(77,26,0) 92%, rgb(102,51,0) 100%);
   position: absolute;
   left: 192px;
   top: 532px;
   width: 681px;
   height: 78px;
-  z-index: 21; }
-
+  z-index: 21;
+}
 .menuover {
   border-width: 0.48px;
-  border-color: #cc9933;
+  border-color: rgb( 204, 153, 51 );
   border-style: solid;
   border-radius: 10px;
-  background-image: -moz-linear-gradient(90deg, #663300 0%, #4d1a00 7%, #330000 50%, #4d1a00 92%, #663300 100%);
-  background-image: -webkit-linear-gradient(90deg, #663300 0%, #4d1a00 7%, #330000 50%, #4d1a00 92%, #663300 100%);
-  background-image: -ms-linear-gradient(90deg, #663300 0%, #4d1a00 7%, #330000 50%, #4d1a00 92%, #663300 100%);
+  background-image: -moz-linear-gradient( 90deg, rgb(102,51,0) 0%, rgb(77,26,0) 7%, rgb(51,0,0) 50%, rgb(77,26,0) 92%, rgb(102,51,0) 100%);
+  background-image: -webkit-linear-gradient( 90deg, rgb(102,51,0) 0%, rgb(77,26,0) 7%, rgb(51,0,0) 50%, rgb(77,26,0) 92%, rgb(102,51,0) 100%);
+  background-image: -ms-linear-gradient( 90deg, rgb(102,51,0) 0%, rgb(77,26,0) 7%, rgb(51,0,0) 50%, rgb(77,26,0) 92%, rgb(102,51,0) 100%);
   opacity: 0.761;
   position: absolute;
   left: 192px;
   top: 532px;
   width: 681px;
   height: 78px;
-  z-index: 22; }
+  z-index: 22;
+}*/
