@@ -448,6 +448,34 @@ function klgwow_custom_column_content($column, $post_id){
 			break;
 	}
 }
+/*
+ Side Bar Funcionts
+ ============================================================================
+ */
+
+function klgwow_create_widget($name, $id, $description){
+	register_sidebar( array(
+		'name' => __($name),
+		'id'=>$id,
+		'description' => __($description),
+		'before_widget'=>'<div class="widget">',
+		'after_widget'=>'</div>',
+		'before_title'=>'<h2 class="widget-title">',
+		'after_title'=>'</h2>'
+		) );
+}
+
+klgwow_create_widget('Home Sidebar','home','Widget en la sidebar principal');
+klgwow_create_widget('Footer 1 Sidebar','footer1','Widget en el footer 1');
+klgwow_create_widget('Footer 2 Sidebar','footer2','Widget en el footer 2');
+klgwow_create_widget('Footer 3 Sidebar','footer3','Widget en el footer 3');
+
+
+function klgwow_say_hello(){
+	return '<h3>HOLA</h3>';
+}
+
+
 
 
 

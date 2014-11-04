@@ -1,35 +1,28 @@
 <?php get_header(); ?>
-	<!-- Stuff will go here -->
-	<?php the_post(); ?>
-	<article class="page-content">
-		<?php the_content(); ?>
-	</article>
-	<div class="menu">
-		
-	</div>
-	<div class="menuover">
-		
-	</div>
-
-	<aside class="lastest-news">
-		<h2>Lastest News</h2>
-		<?php 
-		//New Query for news articles
-		$args = array(
-			'post_type' => 'post',
-			'orderby' => 'date',
-			'order' => 'ASC',
-			'posts_per_page' => 5,);
-		$lastest_news = new WP_Query($args);
-		if ($lastest_news->have_posts()):while($lastest_news->have_posts()):$lastest_news->the_post();
-		 ?>
-		 <article <?php post_class(); ?>>
-		 	<h3><?php the_title(); ?></h3>
-		 	<?php the_excerpt(); ?>
-		 	<a href="<?php the_permalink(); ?>">Read more &raquo;</a>
-		 </article>
-		<?php endwhile; endif; ?>
-		<?php wp_reset_query(); ?>
-	</aside>
+	<section class="primary">
+	<?php layerslider(1); ?>
+	<?php if( have_posts() ) : while (have_posts() ) : the_post(); ?>
+		<article <?php post_class( 'post' ) ?>>
+		<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+		<p><?php the_excerpt(); ?></p>
+		<ul class="post-meta">
+			<span class="klgwow-avatar">
+				<?php echo get_avatar( get_the_author_meta('ID'), $size = '24' ); ?>
+				de <?php the_author_posts_link( ); ?>
+			</span>
+		</ul>
+		<?php if(get_the_post_thumbnail( )) : ?>
+		<div class="featured-image">
+			<?php the_post_thumbnail( 'large' ); ?>
+		</div>
+		<?php endif; ?>
+		</article>
+		<div class="nav-previos"><?php next_post_link( 'Viejas Entradas' ); ?></div>
+		<div class="nav-next"><?php previous_posts_link( 'Nuevas entradas' ); ?></div>
+		<?php endwhile; else: ?>
+	<p><?php _e('Esto es embarazoso, no hay paginas encontradas'); ?></p>
+	<?php endif; ?>
+	</section>
+	<?php get_sidebar( ); ?>
 <?php get_footer();  ?>
 

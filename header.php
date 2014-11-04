@@ -10,6 +10,7 @@
  	<meta charset="<?php bloginfo('charset'); ?>"
  	<meta name="viewpost" content="width=device-width, initial-scale=1"/>
  	<title><?php wp_title('|', true,'right'); ?></title>
+ 	<link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.ico" />
  	<link rel="profile" href="http://gmpg.org/xfn/11">
  	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
  	<!-- HTML5 SHIV for IE --><!-- If using Modernizr you can remove this script!-->
