@@ -10,7 +10,9 @@
 @import 'normalize';
 @import 'variables';
 
-
+/*
+Estilos generales 
+ */
 body{
 	//overflow:scroll;
 	//position: fixed;
@@ -24,8 +26,8 @@ body{
 	font-size:16px;
 	line-height:1.375;
 	color:$clr-text;
-	background:url("images/bg-repeat.jpg") center repeat-y #100805;
-	background-size:70%;
+	background:url("images/bg-repeat.jpg") 60% repeat-y #100805;
+	background-size:135%;
 }
 
 h1,h2,h3{
@@ -36,7 +38,7 @@ h1,h2,h3{
 h1{
 	margin:10px 0;
 	text-align:center;
-	font-size:40px;
+	font-size:30px;
 
 	a{color:$clr-headers;}
 	a:hover{color:$clr-headers; text-decoration:none;}
@@ -174,25 +176,50 @@ article h1 {
   padding: 0;
  
 }
+/*
+Codigo CSS de todo el cuerpo.
+ */
 
 #wrapper{
 	display:flex;
+	justify-content: space-between;
 	min-width:1120px;
 	position:relative;
 	width: 1120px;
 	margin: 0 auto;
-	background:url("images/content-bg.png");
+	//background:url("images/content-bg.png");
 	repeat:repeat-y;
 	margin-top:30px;
-	box-shadow: 0 0 5px 5px black;
+	//box-shadow: 0 0 5px 5px black;
 	z-index:10;
-}
-.primary{
+	.hover-slider{
+		position:absolute;
+		top:0;
+		z-index: 50;
+	}
+	.primary{
+		width: 770px;
+		margin: 10px 0 10px 0;
+		.post{
+			box-shadow: 0 0 1px 1px black;
+			background-color:steelblue;
+			h1{
+				background:url("images/titlebg.jpg");
+				padding-left:.7em;
+				a{
+					text-shadow: 0 0 1px 1px tomato;
+				}
+				
+			}
+		}
+	}
 
-	width: 770px;
 }
+
 .sidebar{
-	width: 348px;
+	width: 320px;
+	right: 0;
+	background-color:tomato;
 }
 .widget{
 	margin-left:4px;

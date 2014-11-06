@@ -25,5 +25,11 @@ $img-header:"hola";
 	src: url("../fonts/LifeCraft_Font.ttf");
 }
 
-$font-headers:'LifeCraft', cursive;
+@font-face{
+	font-family:"PowerPlay";
+	src: url("../fonts/PowerPlay.ttf");
+}
+
+
+$font-headers:'Titillium', cursive;
 $font-body:'Ubuntu', serif;

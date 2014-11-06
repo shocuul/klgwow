@@ -369,6 +369,12 @@ th {
 @font-face {
   font-family: "LifeCraft";
   src: url("../fonts/LifeCraft_Font.ttf"); }
+@font-face {
+  font-family: "PowerPlay";
+  src: url("../fonts/PowerPlay.ttf"); }
+/*
+Estilos generales 
+ */
 body {
   top: 0;
   left: 0;
@@ -380,17 +386,17 @@ body {
   font-size: 16px;
   line-height: 1.375;
   color: #dcdcdc;
-  background: url("images/bg-repeat.jpg") center repeat-y #100805;
-  background-size: 70%; }
+  background: url("images/bg-repeat.jpg") 60% repeat-y #100805;
+  background-size: 135%; }
 
 h1, h2, h3 {
   color: #fbcd00;
-  font-family: "LifeCraft", cursive; }
+  font-family: "Titillium", cursive; }
 
 h1 {
   margin: 10px 0;
   text-align: center;
-  font-size: 40px; }
+  font-size: 30px; }
   h1 a {
     color: #fbcd00; }
   h1 a:hover {
@@ -504,23 +510,39 @@ article h1 {
   margin: 0;
   padding: 0; }
 
+/*
+Codigo CSS de todo el cuerpo.
+ */
 #wrapper {
   display: flex;
+  justify-content: space-between;
   min-width: 1120px;
   position: relative;
   width: 1120px;
   margin: 0 auto;
-  background: url("images/content-bg.png");
   repeat: repeat-y;
   margin-top: 30px;
-  box-shadow: 0 0 5px 5px black;
   z-index: 10; }
-
-.primary {
-  width: 770px; }
+  #wrapper .hover-slider {
+    position: absolute;
+    top: 0;
+    z-index: 50; }
+  #wrapper .primary {
+    width: 770px;
+    margin: 10px 0 10px 0; }
+    #wrapper .primary .post {
+      box-shadow: 0 0 1px 1px black;
+      background-color: steelblue; }
+      #wrapper .primary .post h1 {
+        background: url("images/titlebg.jpg");
+        padding-left: .7em; }
+        #wrapper .primary .post h1 a {
+          text-shadow: 0 0 1px 1px tomato; }
 
 .sidebar {
-  width: 348px; }
+  width: 320px;
+  right: 0;
+  background-color: tomato; }
 
 .widget {
   margin-left: 4px;

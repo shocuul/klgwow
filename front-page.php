@@ -1,9 +1,15 @@
 <?php get_header(); ?>
 	<section class="primary">
-	<?php layerslider(1); ?>
+	<?php layerslider(2); ?>
+	<div class="hover-slider">
+		<img src="<?php echo get_template_directory_uri(); ?>/images/marco-slider.png" alt="slider-hover" />
+	</div>
 	<?php if( have_posts() ) : while (have_posts() ) : the_post(); ?>
 		<article <?php post_class( 'post' ) ?>>
 		<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+		<div class="entry">
+			
+		</div>
 		<p><?php the_excerpt(); ?></p>
 		<ul class="post-meta">
 			<span class="klgwow-avatar">
