@@ -8,20 +8,24 @@
 		<article <?php post_class( 'post' ) ?>>
 		<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 		<div class="entry">
-			
-		</div>
 		<p><?php the_excerpt(); ?></p>
-		<ul class="post-meta">
-			<span class="klgwow-avatar">
-				<?php echo get_avatar( get_the_author_meta('ID'), $size = '24' ); ?>
-				de <?php the_author_posts_link( ); ?>
-			</span>
-		</ul>
+		</div>
 		<?php if(get_the_post_thumbnail( )) : ?>
 		<div class="featured-image">
 			<?php the_post_thumbnail( 'large' ); ?>
 		</div>
 		<?php endif; ?>
+		<!--
+		<ul class="post-meta">
+			<span class="klgwow-avatar">
+				<?php echo get_avatar( get_the_author_meta('ID'), $size = '25' ); ?>
+				de <?php the_author_posts_link( ); ?>
+			</span>
+		</ul>-->
+		<div class="more">
+			<a href="<?php the_permalink(); ?>" class="Button">Continuar Leyendo</a>
+		</div>
+		
 		</article>
 		<div class="nav-previos"><?php next_post_link( 'Viejas Entradas' ); ?></div>
 		<div class="nav-next"><?php previous_posts_link( 'Nuevas entradas' ); ?></div>

@@ -138,6 +138,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/images\/marco-slider.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 115668,
+		"inputAbbreviatedPath": "\/images\/marco-slider.png",
+		"outputAbbreviatedPath": "\/images\/marco-slider.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/images\/nav-endcap-left.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -167,6 +178,28 @@
 		"initialSize": 0,
 		"inputAbbreviatedPath": "\/images\/nav.png",
 		"outputAbbreviatedPath": "\/images\/nav.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/post-content-bg.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 3872,
+		"inputAbbreviatedPath": "\/images\/post-content-bg.jpg",
+		"outputAbbreviatedPath": "\/images\/post-content-bg.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/titlebg.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 3318,
+		"inputAbbreviatedPath": "\/images\/titlebg.jpg",
+		"outputAbbreviatedPath": "\/images\/titlebg.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -268,6 +301,17 @@
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
+		},
+	"\/screenshot.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 67844,
+		"inputAbbreviatedPath": "\/screenshot.jpg",
+		"outputAbbreviatedPath": "\/screenshot.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
 		},
 	"\/sidebar-news.php": {
 		"fileType": 8192,

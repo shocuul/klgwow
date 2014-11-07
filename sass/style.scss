@@ -38,7 +38,7 @@ h1,h2,h3{
 h1{
 	margin:10px 0;
 	text-align:center;
-	font-size:30px;
+	font-size:1em;
 
 	a{color:$clr-headers;}
 	a:hover{color:$clr-headers; text-decoration:none;}
@@ -122,10 +122,15 @@ nav.main-navigation ul {
 			line-height:57px;
 			display: inline-block;
 			width: 140px;
-			
+			-webkit-transition: all .25s ease;
+			   -moz-transition: all .25s;
+			    -ms-transition: all .25s;
+			     -o-transition: all .25s;
+			        transition: all .25s;
 			
 			&:hover{
 				color:$clr-hover;
+				text-shadow: 2px 2px 8px red;
 			}
 		}
 	}
@@ -179,6 +184,36 @@ article h1 {
 /*
 Codigo CSS de todo el cuerpo.
  */
+.wp-post-image{
+				display:block;
+				margin:0 auto;
+				border: 1px solid #010101;
+}
+
+.Button {
+	-moz-box-shadow:inset 0px 34px 0px -15px #b54b3a;
+	-webkit-box-shadow:inset 0px 34px 0px -15px #b54b3a;
+	box-shadow:inset 0px 34px 0px -15px #b54b3a;
+	background-color:#a73f2d;
+	border:1px solid #241d13;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:9px 23px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #7a2a1d;
+}
+.Button:hover {
+	background-color:#b34332;
+}
+.Button:active {
+	position:relative;
+	top:1px;
+}
+
 
 #wrapper{
 	display:flex;
@@ -202,10 +237,19 @@ Codigo CSS de todo el cuerpo.
 		margin: 10px 0 10px 0;
 		.post{
 			box-shadow: 0 0 1px 1px black;
-			background-color:steelblue;
+			background:url("images/post-content-bg.jpg");
+			.more{
+				margin: 2px;
+			}
+			p{
+				margin:.5em;
+			}
+
 			h1{
 				background:url("images/titlebg.jpg");
-				padding-left:.7em;
+				padding:.5em;
+				font-size: 1.3em;
+				border-bottom: 1px solid #000;
 				a{
 					text-shadow: 0 0 1px 1px tomato;
 				}

@@ -14,6 +14,7 @@
  */
 @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
 @import url(http://fonts.googleapis.com/css?family=Ubuntu:400,700|Titillium+Web:400,600);
+@import url(http://fonts.googleapis.com/css?family=Arvo:400,700|Open+Sans:400,700|Allerta);
 html {
   font-family: sans-serif;
   /* 1 */
@@ -382,7 +383,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: "Ubuntu", serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 16px;
   line-height: 1.375;
   color: #dcdcdc;
@@ -391,12 +392,12 @@ body {
 
 h1, h2, h3 {
   color: #fbcd00;
-  font-family: "Titillium", cursive; }
+  font-family: "Arvo", serif; }
 
 h1 {
   margin: 10px 0;
   text-align: center;
-  font-size: 30px; }
+  font-size: 1em; }
   h1 a {
     color: #fbcd00; }
   h1 a:hover {
@@ -415,7 +416,7 @@ h4 {
   color: #fbcd00; }
 
 p {
-  font-family: "Ubuntu", serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 14px;
   margin: 0 0 10px; }
 
@@ -469,9 +470,15 @@ nav.main-navigation ul {
       text-transform: uppercase;
       line-height: 57px;
       display: inline-block;
-      width: 140px; }
+      width: 140px;
+      -webkit-transition: all .25s ease;
+      -moz-transition: all .25s;
+      -ms-transition: all .25s;
+      -o-transition: all .25s;
+      transition: all .25s; }
       nav.main-navigation ul li a:hover {
-        color: #fb8500; }
+        color: #fb8500;
+        text-shadow: 2px 2px 8px red; }
 
 .main-navigation ul {
   margin: 0 0 20px;
@@ -513,6 +520,34 @@ article h1 {
 /*
 Codigo CSS de todo el cuerpo.
  */
+.wp-post-image {
+  display: block;
+  margin: 0 auto;
+  border: 1px solid #010101; }
+
+.Button {
+  -moz-box-shadow: inset 0px 34px 0px -15px #b54b3a;
+  -webkit-box-shadow: inset 0px 34px 0px -15px #b54b3a;
+  box-shadow: inset 0px 34px 0px -15px #b54b3a;
+  background-color: #a73f2d;
+  border: 1px solid #241d13;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 9px 23px;
+  text-decoration: none;
+  text-shadow: 0px -1px 0px #7a2a1d; }
+
+.Button:hover {
+  background-color: #b34332; }
+
+.Button:active {
+  position: relative;
+  top: 1px; }
+
 #wrapper {
   display: flex;
   justify-content: space-between;
@@ -532,10 +567,16 @@ Codigo CSS de todo el cuerpo.
     margin: 10px 0 10px 0; }
     #wrapper .primary .post {
       box-shadow: 0 0 1px 1px black;
-      background-color: steelblue; }
+      background: url("images/post-content-bg.jpg"); }
+      #wrapper .primary .post .more {
+        margin: 2px; }
+      #wrapper .primary .post p {
+        margin: .5em; }
       #wrapper .primary .post h1 {
         background: url("images/titlebg.jpg");
-        padding-left: .7em; }
+        padding: .5em;
+        font-size: 1.3em;
+        border-bottom: 1px solid #000; }
         #wrapper .primary .post h1 a {
           text-shadow: 0 0 1px 1px tomato; }
 

@@ -20,6 +20,8 @@ $img-header:"hola";
 @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
 @import url(http://fonts.googleapis.com/css?family=Ubuntu:400,700|Titillium+Web:400,600);
 
+@import url(http://fonts.googleapis.com/css?family=Arvo:400,700|Open+Sans:400,700|Allerta);
+
 @font-face{
 	font-family:"LifeCraft";
 	src: url("../fonts/LifeCraft_Font.ttf");
@@ -31,5 +33,5 @@ $img-header:"hola";
 }
 
 
-$font-headers:'Titillium', cursive;
-$font-body:'Ubuntu', serif;
+$font-headers:'Arvo', serif;
+$font-body:'Open Sans', sans-serif;
