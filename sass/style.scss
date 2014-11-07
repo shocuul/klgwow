@@ -71,6 +71,19 @@ a{
 		//text-decoration:underline;
 	}
 }
+.footer{
+	margin: 0 auto;
+	background:url("images/post-content-bg.jpg");
+	width: 1120px;
+	$color-footer: darken(red,30%);
+	box-shadow: 0 0 1px 1px $color-footer;
+	border-radius: 5px;
+	display:flex;
+	justify-content:space-between;
+	.widget-footer{
+		width: 370px;
+	}
+}
 
 .site-header{
 	background:url("./images/headerbg.png");
@@ -239,13 +252,21 @@ Codigo CSS de todo el cuerpo.
 			box-shadow: 0 0 1px 1px black;
 			background:url("images/post-content-bg.jpg");
 			.more{
-				margin: 2px;
+				margin: 5px;
 			}
 			p{
-				margin:.5em;
+				margin:.6em;
 			}
-
-			h1{
+			.post-meta{
+				list-style: none;
+				li{
+					display:inline-block;
+					font-style:italic;
+					font-size:.8em;
+					font-color:darken($clr-text, 30%);
+				}
+			}
+			.title-post{
 				background:url("images/titlebg.jpg");
 				padding:.5em;
 				font-size: 1.3em;
@@ -260,16 +281,27 @@ Codigo CSS de todo el cuerpo.
 
 }
 
-.sidebar{
-	width: 320px;
-	right: 0;
-	background-color:tomato;
-}
 .widget{
+	box-shadow: 0 0 1px 1px black;
+	background:url("images/post-content-bg.jpg");
 	margin-left:4px;
 	margin-right:4px;
 
+	.widget-title{
+		background:url("images/titlebg.jpg");
+		padding:.5em;
+		font-size: 1.1em;
+		border-bottom: 1px solid #000;
+	}
+
 }
+
+.sidebar{
+	width: 320px;
+	right: 0;
+	//background-color:tomato;
+}
+
 
 
 

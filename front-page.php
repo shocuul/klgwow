@@ -5,28 +5,7 @@
 		<img src="<?php echo get_template_directory_uri(); ?>/images/marco-slider.png" alt="slider-hover" />
 	</div>
 	<?php if( have_posts() ) : while (have_posts() ) : the_post(); ?>
-		<article <?php post_class( 'post' ) ?>>
-		<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
-		<div class="entry">
-		<p><?php the_excerpt(); ?></p>
-		</div>
-		<?php if(get_the_post_thumbnail( )) : ?>
-		<div class="featured-image">
-			<?php the_post_thumbnail( 'large' ); ?>
-		</div>
-		<?php endif; ?>
-		<!--
-		<ul class="post-meta">
-			<span class="klgwow-avatar">
-				<?php echo get_avatar( get_the_author_meta('ID'), $size = '25' ); ?>
-				de <?php the_author_posts_link( ); ?>
-			</span>
-		</ul>-->
-		<div class="more">
-			<a href="<?php the_permalink(); ?>" class="Button">Continuar Leyendo</a>
-		</div>
-		
-		</article>
+		<?php get_template_part( "content-home" ); ?>
 		<div class="nav-previos"><?php next_post_link( 'Viejas Entradas' ); ?></div>
 		<div class="nav-next"><?php previous_posts_link( 'Nuevas entradas' ); ?></div>
 		<?php endwhile; else: ?>

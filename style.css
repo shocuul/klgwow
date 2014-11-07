@@ -426,6 +426,17 @@ a {
   a:hover {
     color: shade(#5c000b, 10%); }
 
+.footer {
+  margin: 0 auto;
+  background: url("images/post-content-bg.jpg");
+  width: 1120px;
+  box-shadow: 0 0 1px 1px #660000;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between; }
+  .footer .widget-footer {
+    width: 370px; }
+
 .site-header {
   background: url("./images/headerbg.png");
   margin: 0;
@@ -569,22 +580,35 @@ Codigo CSS de todo el cuerpo.
       box-shadow: 0 0 1px 1px black;
       background: url("images/post-content-bg.jpg"); }
       #wrapper .primary .post .more {
-        margin: 2px; }
+        margin: 5px; }
       #wrapper .primary .post p {
-        margin: .5em; }
-      #wrapper .primary .post h1 {
+        margin: .6em; }
+      #wrapper .primary .post .post-meta {
+        list-style: none; }
+        #wrapper .primary .post .post-meta li {
+          display: inline-block;
+          font-style: italic;
+          font-size: .8em;
+          font-color: #909090; }
+      #wrapper .primary .post .title-post {
         background: url("images/titlebg.jpg");
         padding: .5em;
         font-size: 1.3em;
         border-bottom: 1px solid #000; }
-        #wrapper .primary .post h1 a {
+        #wrapper .primary .post .title-post a {
           text-shadow: 0 0 1px 1px tomato; }
+
+.widget {
+  box-shadow: 0 0 1px 1px black;
+  background: url("images/post-content-bg.jpg");
+  margin-left: 4px;
+  margin-right: 4px; }
+  .widget .widget-title {
+    background: url("images/titlebg.jpg");
+    padding: .5em;
+    font-size: 1.1em;
+    border-bottom: 1px solid #000; }
 
 .sidebar {
   width: 320px;
-  right: 0;
-  background-color: tomato; }
-
-.widget {
-  margin-left: 4px;
-  margin-right: 4px; }
+  right: 0; }
