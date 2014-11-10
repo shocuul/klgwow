@@ -22,7 +22,7 @@
 		</div>
 	</div>
 	<div class="credits">
-		
+		Todos los derechos Reservados 2014 &reg; Kaos Latin Gamers Desarrollado por JDPacheco.
 	</div>
 	</body>
 </html>

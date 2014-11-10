@@ -81,6 +81,7 @@ add_filter( 'wp_title', 'twentytwelve_wp_title', 10, 2 );
 			wp_register_script('jquery',("http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"),false);
 			wp_enqueue_script('jquery');
 		}
+		wp_enqueue_script('main_js',get_template_directory_uri() . '/js/app.js',array('jquery'),'',true);
 		
 	}
 	add_action('wp_enqueue_scripts','klgwow_scripts_and_styles');
