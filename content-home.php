@@ -18,6 +18,7 @@
 		</li>
 		<li class="dat">en <?php the_category( ', ' ); ?></li>
 		<li class="date">el <?php the_time('F j, Y'); ?></li>
+		<li class="share"><?php //quitar en liveserver sharing_display(); ?> </li>
 		<li class="more"><a href="<?php the_permalink(); ?>" class="Button">Continuar Leyendo</a></li>	
 	</ul>
 		

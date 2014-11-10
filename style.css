@@ -405,7 +405,6 @@ h1 {
     text-decoration: none; }
 
 h2 {
-  margin-bottom: 16px;
   font-size: 32px; }
 
 h3 {
@@ -506,6 +505,12 @@ Codigo CSS de todo el cuerpo.
   margin: 0 auto;
   border: 1px solid #010101; }
 
+.align-right {
+  float: right; }
+
+.align-left {
+  float: left; }
+
 .Button {
   -moz-box-shadow: inset 0px 34px 0px -15px #b54b3a;
   -webkit-box-shadow: inset 0px 34px 0px -15px #b54b3a;
@@ -521,6 +526,10 @@ Codigo CSS de todo el cuerpo.
   padding: 9px 23px;
   text-decoration: none;
   text-shadow: 0px -1px 0px #7a2a1d; }
+  .Button a {
+    color: #fff; }
+    .Button a:hover {
+      color: #fff; }
 
 .Button:hover {
   background-color: #b34332;
@@ -574,6 +583,20 @@ Codigo CSS de todo el cuerpo.
         border-bottom: 1px solid #000; }
         #wrapper .primary .post .title-post a {
           text-shadow: 0 0 1px 1px tomato; }
+    #wrapper .primary .page {
+      box-shadow: 0 0 1px 1px black;
+      background: url("images/post-content-bg.jpg"); }
+      #wrapper .primary .page p {
+        margin: .6em; }
+      #wrapper .primary .page .title-post {
+        background: url("images/titlebg.jpg");
+        padding: .5em;
+        font-size: 1.3em;
+        text-transform: uppercase;
+        text-align: center;
+        border-bottom: 1px solid #000; }
+        #wrapper .primary .page .title-post a {
+          text-shadow: 0 0 1px 1px tomato; }
 
 .widget {
   box-shadow: 0 0 1px 1px black;
@@ -584,7 +607,9 @@ Codigo CSS de todo el cuerpo.
     background: url("images/titlebg.jpg");
     padding: .5em;
     font-size: 1.1em;
-    border-bottom: 1px solid #000; }
+    border-bottom: 1px solid #000;
+    margin-top: 1.11em;
+    margin-bottom: 0px; }
 
 .sidebar {
   width: 320px;

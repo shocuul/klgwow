@@ -6,7 +6,7 @@
 			<h2 class="title-post"><?php the_title(); ?></h2>
 			<?php if(get_the_post_thumbnail( )) : ?>
 			<div class="featured-image">
-			<?php the_post_thumbnail( 'large' ); ?>
+			<?php //the_post_thumbnail( 'large' ); ?>
 			</div>
 		<?php endif; ?>
 			<?php the_content(); ?>

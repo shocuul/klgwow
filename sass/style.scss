@@ -45,7 +45,7 @@ h1{
 }
 
 h2{
-	margin-bottom:16px;
+	//margin-bottom:16px;
 	font-size:32px;
 }
 
@@ -165,6 +165,12 @@ Codigo CSS de todo el cuerpo.
 				margin:0 auto;
 				border: 1px solid #010101;
 }
+.align-right{
+	float:right;
+}
+.align-left{
+	float:left;
+}
 
 .Button {
 	-moz-box-shadow:inset 0px 34px 0px -15px #b54b3a;
@@ -181,6 +187,12 @@ Codigo CSS de todo el cuerpo.
 	padding:9px 23px;
 	text-decoration:none;
 	text-shadow:0px -1px 0px #7a2a1d;
+	a{
+		color:#fff;
+		&:hover{
+			color:#fff;
+		}
+	}
 }
 .Button:hover {
 	background-color:#b34332;
@@ -214,7 +226,7 @@ Codigo CSS de todo el cuerpo.
 	.primary{
 		width: 770px;
 		margin: 10px 0 10px 0;
-		.post{
+		.post {
 			box-shadow: 0 0 1px 1px black;
 			background:url("images/post-content-bg.jpg");
 			.more{
@@ -248,6 +260,25 @@ Codigo CSS de todo el cuerpo.
 				
 			}
 		}
+		.page{
+			p{
+				margin:.6em;
+			}
+			box-shadow: 0 0 1px 1px black;
+			background:url("images/post-content-bg.jpg");
+			.title-post{
+				background:url("images/titlebg.jpg");
+				padding:.5em;
+				font-size: 1.3em;
+				text-transform: uppercase;
+				text-align:center;
+				border-bottom: 1px solid #000;
+				a{
+					text-shadow: 0 0 1px 1px tomato;
+				}
+				
+			}
+		}
 	}
 
 }
@@ -264,6 +295,8 @@ Codigo CSS de todo el cuerpo.
 		padding:.5em;
 		font-size: 1.1em;
 		border-bottom: 1px solid #000;
+		margin-top:1.11em;
+		margin-bottom: 0px; 
 	}
 
 }

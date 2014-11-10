@@ -512,6 +512,10 @@ function add_facebook_sdk(){
 
 add_action('thesis_hook_before_html','add_facebook_sdk');
 
+// Widgets
+// 
+// 
+include (TEMPLATEPATH . '/includes/widgets.php');
 
 
 //add_action( "manage_klg_staff_post_custom_columns", "klgwow_custom_column_content", $priority = 10, $accepted_args = 2 );
