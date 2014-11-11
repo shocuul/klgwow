@@ -28,30 +28,30 @@ class klgwow_stream extends WP_Widget{
 			),
 		);
 
-		$api_twitch_url = 'https://api.twitch.tv/kraken/streams/';
-
+		//$api_twitch_url = 'https://api.twitch.tv/kraken/streams/';
+		$api_twitch_url = 'https://api.twitch.tv/kraken/streams?channel=';
 		// The Query
 		$query = new WP_Query( $args );
 			echo $before_widget;
 			echo $before_title;
-			echo $title;
-			echo $after_title;
+			echo $title; 
 		// The Loop
 		if ( $query->have_posts() ) {
-
+			$channel_names = array();
 			while ( $query->have_posts() ) {
 				$query->the_post();
 				$meta = get_post_custom( get_the_ID() );
-				$jsonObj = file_get_contents($api_twitch_url . $meta['klg_player_stream_url'][0]);
-				$response = json_decode($jsonObj, true);
-				if($response['stream']){
-					echo '<iframe src="http://www.twitch.tv/'.$meta['klg_player_stream_url'][0].'/embed" frameborder="0" scrolling="no" height="210" width="100%"></iframe>';
-					echo 'Hay Stream';
-				}else{
-					echo 'No hay Stream';
-				}
+				$channel_names[] = $meta['klg_player_stream_url'][0];
+				// $jsonObj = file_get_contents($api_twitch_url . $meta['klg_player_stream_url'][0]);
+				// $response = json_decode($jsonObj, true);
+				//if($response['stream']){
+					//echo '<iframe src="http://www.twitch.tv/'.$meta['klg_player_stream_url'][0].'/embed" frameborder="0" scrolling="no" height="210" width="100%"></iframe>';
+					//echo 'Hay Stream';
+				//}else{
+					//echo 'No hay Stream';
+			//	}
 				//var_dump($response);
-	    		echo '<h2>' . $meta['klg_player_stream_url'][0] . '</h2>';
+	    		//echo '<h2>' . $meta['klg_player_stream_url'][0] . '</h2>';
 				
 			}
 		} else {
@@ -62,6 +62,31 @@ class klgwow_stream extends WP_Widget{
 
 		// Restore original Post Data
 		wp_reset_postdata();
+		// Agregamos los nombres de los canales a el api
+		foreach ($channel_names as $i => $value) {
+			$api_twitch_url .= $value . ',';
+		}
+		$jsonObj = file_get_contents($api_twitch_url);
+		$response = json_decode($jsonObj, true);
+		if($response['streams']){
+			?>
+			<img src="<?php echo get_template_directory_uri(); ?>/images/led-green.png" alt="led" style="width:25px; position:absolute; right:1.2em;">
+			<?php echo $after_title;
+			foreach ($response['streams'] as $stream) {?>
+				<div class="stream">
+					<h4><img src="<?php echo $stream['channel']['logo'] ?>" alt="logo" style="width:30px;"> <?php echo $stream['channel']['display_name']; ?>
+					<img src="<?php echo $stream['preview']['medium'] ?>" alt="game" style="width:100%;" />
+					<img src="<?php echo get_template_directory_uri(); ?>/images/play.png" alt="play" style="width:40px; position:absolute; top:180px; right:140px;">
+					</h4>
+
+				</div>
+			<?php }
+		}else{
+			?>
+			<img src="<?php echo get_template_directory_uri(); ?>/images/led-red.png" alt="led" style="width:25px; position:absolute; right:1.2em;">
+			<?php echo $after_title;
+			echo '<h4>Nuestros jugadores estan desconectados :C</h4>';
+		}
 		echo $after_widget;
 
 	}

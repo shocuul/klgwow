@@ -226,6 +226,31 @@ Codigo CSS de todo el cuerpo.
 	.primary{
 		width: 770px;
 		margin: 10px 0 10px 0;
+		.role-container{
+			display:flex;
+			display:-webkit-flex;
+			justify-content: space-between;
+			-webkit-justify-content:space-between;
+			.raid-role-box{
+			width: 250px;
+			box-shadow: 0 0 1px 1px black;
+			background:url("images/post-content-bg.jpg");
+			ul{
+				list-style: none;
+				padding-left:1.4em;
+			}
+			img{
+				max-height:30px;
+			}
+			.title{
+				margin:0;
+				background:url("images/titlebg.jpg");
+				padding:.5em;
+				font-size: 1.3em;
+				border-bottom: 1px solid #000;
+			}
+		}
+		}
 		.post {
 			box-shadow: 0 0 1px 1px black;
 			background:url("images/post-content-bg.jpg");
@@ -234,6 +259,16 @@ Codigo CSS de todo el cuerpo.
 			}
 			p{
 				margin:.6em;
+			}
+			img{
+				max-width:750px;
+				width: 750px;
+				height: auto;
+			}
+			iframe{
+				max-width:750px;
+				width:750px;
+				height: 500px;
 			}
 			.post-meta{
 				list-style: none;
@@ -244,6 +279,12 @@ Codigo CSS de todo el cuerpo.
 					font-style:italic;
 					font-size:.8em;
 					font-color:darken($clr-text, 30%);
+				}
+				.klgwow-avatar{
+					img{
+						max-width:40px;
+						max-height:40px;
+					}
 				}
 				.more{
 					float: right;

@@ -160,6 +160,13 @@ function klgwow_taxonomies(){
 			'hierarchical'=>true,
 			'slug'=>'class',
 			'post_type'=>'klg_player'),
+		'klg_raid_group'=>array(
+			'menu_title'=>'Raid Group',
+			'plural'=>'Raid Group',
+			'singular'=>'Raid Grops',
+			'hierarchical'=>false,
+			'slug'=>'raid-group',
+			'post_type'=>'klg_player'),
 		'klg_raid_roles'=>array(
 			'menu_title'=>'Raid Roles',
 			'plural'=>'Roles',
@@ -206,6 +213,7 @@ function klgwow_player_meta_fields($post){
 	wp_nonce_field( basename(__FILE__),'klg_custom_meta_noncename' );
 	$stream_url = get_post_meta( $post->ID,'klg_player_stream_url', true );
 	$armory_url = get_post_meta( $post->ID,'klg_player_armory_url',true);
+	$user_ID    = get_post_meta( $post->ID,'klg_player_user_id',true );
 	?>
 	<p>
 		<label for="klg_player_stream_url">Stream URL</label><br />
@@ -216,6 +224,11 @@ function klgwow_player_meta_fields($post){
 		<label for="klg_player_armory_url">Armory URL</label><br />
 		<input type="text" class="all-options" name="klg_player_armory_url" id="klg_player_armory_url" value="<?php echo esc_attr( $armory_url ); ?>"/>
 		<span class="description">Ingresa aqui el link del Armory del jugador</span>
+	</p>
+	<p>
+		<label for="klg_player_user_id">ID de usuario</label> <br />
+		<input type="text" class="all-options" name="klg_player_user_id" id="klg_player_user_id" value="<?php echo esc_attr( $user_ID ); ?>"/> 
+		<span class="description">Ingrese la ID del Usuario de wordpress si lo tiene</span>
 	</p>
 	<?php
 }
@@ -250,6 +263,7 @@ function klg_player_meta_save($post_id){
 	//Get the posted data and pass it into an associative array for easy of entry
 	$metadata['klg_player_stream_url'] = (isset($_POST['klg_player_stream_url'])?$_POST['klg_player_stream_url']:'');
 	$metadata['klg_player_armory_url'] = (isset($_POST['klg_player_armory_url'])?$_POST['klg_player_armory_url']:'');
+	$metadata['klg_player_user_id'] = (isset($_POST['klg_player_user_id'])?$_POST['klg_player_user_id']:'');
 
 	// add/update record (both are taken care of by update_post_meta)
 	foreach ($metadata as $key => $value) {
@@ -516,6 +530,7 @@ add_action('thesis_hook_before_html','add_facebook_sdk');
 // 
 // 
 include (TEMPLATEPATH . '/includes/widgets.php');
+include (TEMPLATEPATH . '/includes/klg-player-function.php');
 
 
 //add_action( "manage_klg_staff_post_custom_columns", "klgwow_custom_column_content", $priority = 10, $accepted_args = 2 );
