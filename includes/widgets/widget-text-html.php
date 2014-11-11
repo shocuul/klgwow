@@ -1,5 +1,6 @@
 <?php 
 add_action( 'widgets_init', 'klgwow_text_html_widget' );
+
 function klgwow_text_html_widget(){
 	register_widget('klgwow_text_html');
 }
