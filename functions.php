@@ -428,7 +428,7 @@ function manage_klg_player_column($column, $post_id){
 			if(empty($streamurl)){
 				echo __('This player dont have stream');
 			}else{
-				printf('<a href="%s" target="_blank"><img src="http://i.imgur.com/Q4Q7gHb.png"/></a>',$streamurl);
+				printf('<a href="%s" target="_blank"><img src="http://i.imgur.com/Q4Q7gHb.png"/></a>','http://www.twitch.tv/'.$streamurl);
 			}
 			break;
 		default:

@@ -73,13 +73,13 @@ class klgwow_stream extends WP_Widget{
 			<img src="<?php echo get_template_directory_uri(); ?>/images/led-green.png" alt="led" style="width:25px; position:absolute; right:1.2em;">
 			<?php echo $after_title;
 			foreach ($response['streams'] as $stream) {?>
-				<div class="stream">
+				<div class="stream" style="height: 210px;">
 					<h4><img src="<?php echo $stream['channel']['logo'] ?>" alt="logo" style="width:30px;"> <?php echo $stream['channel']['display_name']; ?>
 					<img src="<?php echo $stream['preview']['medium'] ?>" alt="game" style="width:100%;" />
-					<img src="<?php echo get_template_directory_uri(); ?>/images/play.png" alt="play" style="width:40px; position:absolute; top:180px; right:140px;">
 					</h4>
-
+					<img src="<?php echo get_template_directory_uri(); ?>/images/play.png" alt="play" style="width:40px; position:relative; top:-130px; left:130px;">
 				</div>
+
 			<?php }
 		}else{
 			?>
