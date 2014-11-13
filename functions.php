@@ -136,7 +136,7 @@ function register_klg_players() {
 		'show_in_nav_menus'   => true,
 		'show_in_admin_bar'   => true,
 		'menu_position'       => 5,
-		'menu_icon'           => 'http://i.imgur.com/VevMcig.png',
+		'menu_icon'           => 'http://i.imgur.com/sw0hoPQ.png',
 		'can_export'          => true,
 		'has_archive'         => true,
 		'exclude_from_search' => false,
@@ -536,7 +536,15 @@ include (TEMPLATEPATH . '/includes/klg-player-function.php');
 //add_action( "manage_klg_staff_post_custom_columns", "klgwow_custom_column_content", $priority = 10, $accepted_args = 2 );
 //add_action( "manage_klg_menu_post_custom_columns", "klgwow_custom_column_content", $priority = 10, $accepted_args = 2 );
 
-
+function jptweak_remove_share() {
+    remove_filter( 'the_content', 'sharing_display',19 );
+    remove_filter( 'the_excerpt', 'sharing_display',19 );
+    if ( class_exists( 'Jetpack_Likes' ) ) {
+        remove_filter( 'the_content', array( Jetpack_Likes::init(), 'post_likes' ), 30, 1 );
+    }
+}
+ 
+add_action( 'loop_start', 'jptweak_remove_share' );
 
 
  ?>

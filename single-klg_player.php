@@ -10,7 +10,8 @@
 	<section class="primary">
 	<article <?php post_class(); ?>>
 		<ul class="info">
-			<li><img src="<?php echo get_template_directory_uri(); ?>/images/class/<?php echo $term_list[0]->slug; ?>.png" alt="class-image" class="img-icon"></li>
+			<li><div class="<?php echo $term_list[0]->slug; ?>"></div>
+			</li>
 			<li>
 				<h1><?php the_title(); ?></h1>
 			</li>
@@ -21,14 +22,17 @@
 			<li><h1><?php echo $term_list[0]->name; ?><h1></li>
 			<?php if ($armory_url != '') : ?>
 			<li>
-			<a href="<?php echo $armory_url; ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/armory.png" alt="armory" class="img-icon" style="width: 60px;"></a>
+			<a href="<?php echo $armory_url; ?>" target="_blank">
+				<span class="armory-icon"></span>
+			</a>
 			</li>
 			<?php endif; ?>
 		</ul>
 		<?php $armory_url = get_post_meta( get_the_ID(), $key = 'klg_player_stream_url', $single = true ); ?>
-		<iframe src="http://www.twitch.tv/<?php echo $armory_url; ?>/embed" frameborder="0" scrolling="no" height="500" width="750"></iframe>
+		<?php if($armory_url != '') : ?>
+		<iframe src="http://www.twitch.tv/<?php echo $armory_url; ?>/embed" frameborder="0" scrolling="no" height="500" width="100%"></iframe>
 			
-		
+		<?php endif; ?>
 		
 		<?php if(has_post_thumbnail()): ?>
 			<?php the_post_thumbnail(); ?>
@@ -37,17 +41,17 @@
 		</p>
 		
 	</article>
-	<?php endwhile; endif; ?>
+	
 	</section>
+	<?php if($armory_url != '') : ?>
 	<aside class="sidebar">
 		<div class="widget" style="margin-top: -8px;">
 		<h2 class="widget-title">Chat</h2>
 		<iframe src="http://www.twitch.tv/<?php echo $armory_url ?>/chat?popout=" frameborder="0" scrolling="no" height="500" width="310"></iframe>
 		</div>
-		<?php if( !dynamic_sidebar( 'home' )): ?>
-		<h2 class="module-heading">Sidebar Setup</h2>
-		<p>Favor de añadir widgets en el panel de control</p>
-	<?php endif; ?>
 	</aside>
-	<?php //get_sidebar(); ?>
+	<?php else :  ?>
+	<?php get_sidebar(); ?>
+	<?php endif; ?>
+	<?php endwhile; endif; ?>
 <?php get_footer(); ?>

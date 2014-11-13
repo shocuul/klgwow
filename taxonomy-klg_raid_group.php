@@ -7,7 +7,7 @@
     $title = $term->name;
 	}
 	 ?>
-	<h3 class="title"><?php echo $title; ?></h3>
+	<h3 class="title-raid"><?php echo $title; ?></h3>
 	<section class="role-container">
 	<?php if ( have_posts() ) :  ?>
 		<div class="raid-role-box">

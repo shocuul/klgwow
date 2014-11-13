@@ -4,9 +4,9 @@
 	?>
 	<?php $term_list = wp_get_post_terms(get_the_ID(), 'klg_pj_class' ); ?>
 	<li>
-		<img src="<?php echo get_template_directory_uri(); ?>/images/class/<?php echo $term_list[0]->slug; ?>.png" alt="class-image">
-		<a href="<?php the_permalink(); ?>"> <?php the_title(); ?></a>
+		<div class="<?php echo $term_list[0]->slug; ?> small-icon"></div>
+		<a href="<?php the_permalink(); ?>" style="padding-left:10px; padding-right:10px;"> <?php the_title(); ?></a>
 		<?php if ($armory_url != '') : ?>
-		<a href="<?php echo $armory_url; ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/armory.png" alt="armory"></a>
+		<a href="<?php echo $armory_url; ?>"><div class="armory-icon small-icon"></div></a>
 		<?php endif; ?>
 	</li>

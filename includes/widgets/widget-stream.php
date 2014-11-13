@@ -41,7 +41,11 @@ class klgwow_stream extends WP_Widget{
 			while ( $query->have_posts() ) {
 				$query->the_post();
 				$meta = get_post_custom( get_the_ID() );
-				$channel_names[] = $meta['klg_player_stream_url'][0];
+				//print_r($meta);
+				$channel_names[] = array(
+					'stream_url' => $meta['klg_player_stream_url'][0],
+					'player_link'=> get_the_permalink());
+				
 				// $jsonObj = file_get_contents($api_twitch_url . $meta['klg_player_stream_url'][0]);
 				// $response = json_decode($jsonObj, true);
 				//if($response['stream']){
@@ -64,26 +68,35 @@ class klgwow_stream extends WP_Widget{
 		wp_reset_postdata();
 		// Agregamos los nombres de los canales a el api
 		foreach ($channel_names as $i => $value) {
-			$api_twitch_url .= $value . ',';
+			$api_twitch_url .= $value['stream_url'] . ',';
 		}
+		//print_r($api_twitch_url);
 		$jsonObj = file_get_contents($api_twitch_url);
 		$response = json_decode($jsonObj, true);
 		if($response['streams']){
 			?>
-			<img src="<?php echo get_template_directory_uri(); ?>/images/led-green.png" alt="led" style="width:25px; position:absolute; right:1.2em;">
+			<div class="led-green"></div>
 			<?php echo $after_title;
 			foreach ($response['streams'] as $stream) {?>
 				<div class="stream" style="height: 210px;">
 					<h4><img src="<?php echo $stream['channel']['logo'] ?>" alt="logo" style="width:30px;"> <?php echo $stream['channel']['display_name']; ?>
-					<img src="<?php echo $stream['preview']['medium'] ?>" alt="game" style="width:100%;" />
+					<?php 
+					foreach ($channel_names as $i => $value) {
+						if($value['stream_url'] == $stream['channel']['name']){
+							$user_url = $value['player_link'];
+						}
+					}
+					 ?>
+					<a href="<?php echo $user_url; ?>"><img src="<?php echo $stream['preview']['medium'] ?>" alt="game" style="width:100%;" />
 					</h4>
-					<img src="<?php echo get_template_directory_uri(); ?>/images/play.png" alt="play" style="width:40px; position:relative; top:-130px; left:130px;">
+					<div class="play-button"></div>
+					</a>
 				</div>
 
 			<?php }
 		}else{
 			?>
-			<img src="<?php echo get_template_directory_uri(); ?>/images/led-red.png" alt="led" style="width:25px; position:absolute; right:1.2em;">
+			<img src="<?php echo get_bloginfo('template_directory'); ?>/images/led-red.png" alt="led" style="width:25px; position:absolute; right:1.2em;">
 			<?php echo $after_title;
 			echo '<h4>Nuestros jugadores estan desconectados :C</h4>';
 		}

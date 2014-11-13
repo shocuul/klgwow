@@ -3,7 +3,7 @@
  * Author: Jose David Pacheco Valedo
  * Author URI: https://twitter.com/josepdvahn
  * Description: Tema para la web de Kaos Latin Gamers Division World of Warcraft
- * Version: 0.1 alpha
+ * Version: 0.6 beta
  * Text Domain: klgwow
  */
 
@@ -73,6 +73,33 @@ a{
 		//text-decoration:underline;
 	}
 }
+.stream{
+	h4{
+		margin-top:0;
+	}
+}
+.led-green{
+	background:url("images/led-green.png") no-repeat;
+	background-size:25px;
+	width:25px;
+	height: 25px; 
+	position:relative; 
+	left: 260px;
+	top: -25px;
+}
+.led-red{
+	@extend .led-green;
+	background:url("images/led-red.png") no-repeat;
+}
+.play-button{
+	background:url("images/play.png") no-repeat;
+	background-size:40px;
+	width:40px; 
+	height: 40px;
+	position:relative; 
+	top:-130px; 
+	left:130px;
+}
 .footer{
 	margin: 0 auto;
 	background:url("images/post-content-bg.jpg");
@@ -92,7 +119,7 @@ a{
 	background:url("images/post-content-bg.jpg");
 	box-shadow: 0 0 1px 1px darken(red,20%);
 	.info{
-		width: 500px;
+		width: 600px;
 		margin:0 auto;
 		list-style: none;
 		padding-left: 10px;
@@ -116,6 +143,84 @@ a{
 	font-style:italic;
 	font-size:.8em;
 
+}
+@mixin ordenar(){
+	position: relative;
+	top:15px;
+}
+.class-icon{
+	width: 63px;
+	height: 65px;
+}
+.armory-icon{
+	@include ordenar;
+	@extend .class-icon;
+	background:url("images/armory.png");
+	background-size:65px;
+	display:block;
+}
+
+.guerrero{
+	@include ordenar;
+	@extend .class-icon;
+	background:url("images/class/guerrero.png");
+}
+.brujo{
+	@include ordenar;
+	@extend .class-icon;
+	background:url("images/class/brujo.png");
+}
+.caballero-de-la-muerte{
+	@include ordenar;
+	@extend .class-icon;
+	background:url("images/class/caballero-de-la-muerte.png");
+}
+.cazador{
+	@include ordenar;
+	@extend .class-icon;
+	background:url("images/class/cazador.png");
+}
+.chaman{
+	@include ordenar;
+	@extend .class-icon;
+	background:url("images/class/chaman.png");
+}
+.druida{
+	@include ordenar;
+	@extend .class-icon;
+	background:url("images/class/druida.png");
+}
+.mago{
+	@include ordenar;
+	@extend .class-icon;
+	background:url("images/class/mago.png");
+}
+.monje{
+	@include ordenar;
+	@extend .class-icon;
+	background:url("images/class/monje.png");
+}
+.paladin{
+	@include ordenar;
+	@extend .class-icon;
+	background:url("images/class/paladin.png");
+}
+.picaro{
+	@include ordenar;
+	@extend .class-icon;
+	background:url("images/class/picaro.png");
+}
+.sacerdote{
+	@include ordenar;
+	@extend .class-icon;
+	background:url("images/class/sacerdote.png");
+}
+.small-icon{
+	width: 30px;
+	height: 30px;
+	background-size:30px;
+	display:inline-block;
+	top:5px;
 }
 
 .site-header{
@@ -184,6 +289,11 @@ Codigo CSS de todo el cuerpo.
 				display:block;
 				margin:0 auto;
 				border: 1px solid #010101;
+}
+
+.ls-container{
+	padding-top:15px;
+	padding-bottom:20px;
 }
 .align-right{
 	float:right;
@@ -284,6 +394,10 @@ Codigo CSS de todo el cuerpo.
 			img{
 				max-height:30px;
 			}
+			.players{
+				margin: 0;
+				margin-bottom:10px;
+			}
 			.title{
 				margin:0;
 				background:url("images/titlebg.jpg");
@@ -330,6 +444,7 @@ Codigo CSS de todo el cuerpo.
 				}
 				.more{
 					float: right;
+					padding-rop: 1.4em; 
 				}
 			}
 			.title-post{
@@ -342,6 +457,12 @@ Codigo CSS de todo el cuerpo.
 				}
 				
 			}
+		}
+		.title-raid{
+			box-shadow: 0 0 1px 1px darken(red, 20%);
+			background:url("images/post-content-bg.jpg");
+			text-align:center;
+			padding: 10px 0;
 		}
 		.page{
 			p{
@@ -373,10 +494,15 @@ Codigo CSS de todo el cuerpo.
 	margin-left:4px;
 	margin-right:4px;
 
+	&:last-child{
+		margin-bottom:20px;
+	}
+
 	.widget-title{
 		background:url("images/titlebg.jpg");
 		padding:.5em;
 		font-size: 1.1em;
+		height: 25px;
 		border-bottom: 1px solid #000;
 		margin-top:1.11em;
 		margin-bottom: 0px; 
@@ -384,9 +510,20 @@ Codigo CSS de todo el cuerpo.
 
 }
 
+.form-image{
+	position:absolute;
+	top:80px;
+	left:420px;
+}
+
+#disqus_thread{
+	margin:10px;
+}
+
 .sidebar{
 	width: 320px;
 	right: 0;
+	paddint-top: 7px;
 	//background-color:tomato;
 }
 /* Meter WOW */
@@ -615,6 +752,8 @@ nav.main-navigation ul {
 	background-image:url("images/nav.png");
 	background-repeat:no-repeat;
 	background-position:top center;
+	display:flex;
+	display:-webkit-flex;
 	height: 150px;
 	z-index: 100;
 }
@@ -627,8 +766,8 @@ nav.main-navigation ul {
 }
 .menu {
     height: 58px;
-    padding-top: 40px;
-    padding-left: 16%;
+    margin:0 auto;
+    margin-top:42px;
 }
 .menu li {
     /*
@@ -643,7 +782,7 @@ nav.main-navigation ul {
 	*/
     border-bottom: 2px solid #181818;
     border-top: 2px solid #303030;
-    min-width: 160px;
+    min-width: 130px;
 }
 .menu > li {
     display: block;
@@ -660,7 +799,7 @@ nav.main-navigation ul {
     color:darken(red, 20%);
     display: block;
     font-family: 'Arvo';
-    font-size: 1.4em;
+    font-size: 1.2em;
     line-height: 54px;
     padding: 0 25px;
     text-shadow: 2px 2px #000;
@@ -731,7 +870,7 @@ nav.main-navigation ul {
     -o-transition: opacity .4s, -o-transform .5s;
     transition: opacity .4s, transform .5s;
     a{
-    	font-size: 1em;
+    	font-size: .8em;
     }
 }
 .menu .sub-menu li:hover a {
